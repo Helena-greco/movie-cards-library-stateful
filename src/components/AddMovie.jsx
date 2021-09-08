@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import InputTexts from './InputTexts';
+import InputRating from './InputRating';
+import InputSelect from './InputSelect';
+import TextArea from './TextArea';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -9,50 +13,34 @@ class AddMovie extends React.Component {
       title: '',
       imagePath: '',
       storyline: '',
+      rating: 0,
+      genre: 'action',
     };
   }
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            data-testid="title-input"
-            onChange={ onClick }
-            value={ title }
-          />
-        </label>
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            data-testid="subtitle-input"
-            onChange={ onClick }
-            value={ subtitle }
-          />
-        </label>
-        <label htmlFor="image-input" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            data-testid="image-input"
-            onChange={ onClick }
-            value={ imagePath }
-          />
-        </label>
-        <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            type="text"
-            data-testid="storyline-input"
-            onChange={ onClick }
-            value={ storyline }
-          />
-        </label>
+        <InputTexts
+          title={ title }
+          subtitle={ subtitle }
+          imagePath={ imagePath }
+          onChange={ onClick }
+        />
+        <TextArea
+          storyline={ storyline }
+          onChange={ onClick }
+        />
+        <InputRating
+          rating={ rating }
+          onChange={ onClick }
+        />
+        <InputSelect
+          genre={ genre }
+          onChange={ onClick }
+        />
       </form>
     );
   }

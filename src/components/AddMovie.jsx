@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import InputTexts from './InputTexts';
 import InputRating from './InputRating';
 import InputSelect from './InputSelect';
 import TextArea from './TextArea';
 
+// Ajuda do Pessiane na mentoria Técnica
 class AddMovie extends React.Component {
   constructor() {
     super();
@@ -16,10 +16,18 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
-    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -27,27 +35,23 @@ class AddMovie extends React.Component {
           title={ title }
           subtitle={ subtitle }
           imagePath={ imagePath }
-          onChange={ onClick }
+          onChange={ this.handleChange }
         />
         <TextArea
           storyline={ storyline }
-          onChange={ onClick }
+          onChange={ this.handleChange }
         />
         <InputRating
           rating={ rating }
-          onChange={ onClick }
+          onChange={ this.handleChange }
         />
         <InputSelect
           genre={ genre }
-          onChange={ onClick }
+          onChange={ this.handleChange }
         />
       </form>
     );
   }
 }
-
-AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
 
 export default AddMovie;

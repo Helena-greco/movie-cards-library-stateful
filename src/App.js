@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <Header />
       <SearchBar />
-      <AddMovie />
       <MovieList movies={ movies } />
+      <AddMovie />
     </div>
   );
 }

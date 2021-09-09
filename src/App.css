@@ -89,8 +89,8 @@ body {
 
 .btn {
   margin: 10px;
-  padding: 3px 8px;
-  border: 1px solid rgba(0, 0, 0, 0.603);
   background-color: #343a40;
+  border: 1px solid rgba(0, 0, 0, 0.603);
+  padding: 3px 8px;
   color: #f8f9fa;
 }
